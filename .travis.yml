@@ -24,5 +24,6 @@ deploy:
   region: "eu-central-1"
   app: "docker-app"
   env: "docker-app"
-  zip_file: docker-app-$TRAVIS_BUILD_NUMBER.zip
+  zip_file: $TRAVIS_BUILD_DIR/docker-app-$TRAVIS_BUILD_NUMBER.zip
+  skip_cleanup: true
   bucket_name: "elasticbeanstalk-eu-central-1-990322255852"
