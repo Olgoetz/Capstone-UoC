@@ -5,8 +5,8 @@ services:
 
 before_install:
   - echo 'Zipping the app'
-  - echo $TRAVIS_BUILD_DIR
-  - zip -r ${TRAVIS_BUILD_DIR}/docker-app-${TRAVIS_BUILD__NUMBER}.zip ./App/app
+
+  - zip -r $TRAVIS_BUILD_DIR/docker-app-$TRAVIS_BUILD__NUMBER.zip ./App/app
   - echo 'Zipping finished'
   - docker build -t trooper1989/react-uni -f ./App/app/Dockerfile.dev ./App/app
 
@@ -22,5 +22,5 @@ deploy:
   region: "eu-central-1"
   app: "docker-app"
   env: "docker-app"
-  zip_file: ${TRAVIS_BUILD_DIR}/docker-app-${TRAVIS_BUILD__NUMBER}.zip
+  zip_file: $TRAVIS_BUILD_DIR/docker-app-$TRAVIS_BUILD__NUMBER.zip
   bucket_name: "elasticbeanstalk-eu-central-1-990322255852"
