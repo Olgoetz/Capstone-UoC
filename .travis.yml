@@ -6,4 +6,4 @@ before_install:
   - docker build -t trooper1989/react-uni -f ./App/app/Dockerfile.dev ./App/app
 
 script:
-  - docker run -e CI=true trooper1989/react-uni npm run test
+  - docker run -e CI=true trooper1989/react-uni npm run test -- --coverage
