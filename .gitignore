@@ -2,7 +2,7 @@
 .terraform/
 node_modules/
 *.tfstate
-*.tfsate.backup
+*.tfstate.backup
 .idea/
 *.iml
 *.iws
