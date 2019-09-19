@@ -12,7 +12,7 @@ script:
 before_deploy:
   - echo 'Zipping the app'
   - echo $TRAVIS_BUILD_NUMBER
-  - zip -r /$TRAVIS_BUILD_DIR/docker-app-$TRAVIS_BUILD_NUMBER.zip ./App/app
+  - zip -r /$TRAVIS_BUILD_DIR/docker-app-$TRAVIS_BUILD_NUMBER.zip ./App/app/
   - echo 'Zipping finished'
 
 deploy:
