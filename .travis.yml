@@ -7,3 +7,14 @@ before_install:
 
 script:
   - docker run -e CI=true trooper1989/react-uni npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id:
+    secure: "$ACCESS_KEY_ID"
+  secret_access_key:
+    secure: "$SECRET_ACCESS_KEY"
+  region: "us-east-1"
+  app: "docker-app"
+  env: "docker-app"
+  bucket_name: "oliver-goetz-docker"

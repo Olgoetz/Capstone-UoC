@@ -6,6 +6,13 @@ provider "aws" {
 }
 
 
+resource "aws_s3_bucket" "bs" {
+  bucket = "oliver-goetz-docker-eb"
+  acl    = "private"
+
+  tags = var.tags
+}
+
 
 resource "aws_elastic_beanstalk_application" "bsapp" {
   name        = "docker-app"
@@ -28,4 +35,12 @@ resource "aws_elastic_beanstalk_environment" "bsappenvtest" {
   }
 
   tags = var.tags
+}
+
+
+output "eb_all_settings" {
+  value = aws_elastic_beanstalk_environment.bsappenvtest.all_settings
+}
+output "eb_cname" {
+  value = aws_elastic_beanstalk_environment.bsappenvtest.cname
 }
