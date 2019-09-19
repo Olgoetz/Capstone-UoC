@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t trooper1989/react-uni -f Dockerfile.dev ./App/app
+  - docker build -t trooper1989/react-uni -f ./App/appDockerfile.dev ./App/app
 
 script:
   - docker run trooper1989/react-uni npm run test -- --coverage
