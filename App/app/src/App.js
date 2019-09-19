@@ -13,7 +13,7 @@ function App() {
       
       </header>
       <div>
-      <h1>I am dockerized React App
+      <h1>I am dockerized React App of the testUser!
         ! </h1>
       </div>
     </div>
