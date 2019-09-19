@@ -1,4 +1,5 @@
 sudo: required
+language: bash
 services:
   - docker
 
@@ -7,6 +8,9 @@ before_install:
 
 script:
   - docker run -e CI=true trooper1989/react-uni npm run test -- --coverage
+
+after_script:
+  - zip -r docker-app.zip ./App/app
 
 deploy:
   provider: elasticbeanstalk
@@ -17,4 +21,5 @@ deploy:
   region: "eu-central-1"
   app: "docker-app"
   env: "docker-app"
+  zip_file: docker-app.zip
   bucket_name: "elasticbeanstalk-eu-central-1-990322255852"
