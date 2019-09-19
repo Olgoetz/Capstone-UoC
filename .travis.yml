@@ -4,13 +4,11 @@ services:
   - docker
 
 before_install:
+  - zip -r docker-app.zip ./App/app
   - docker build -t trooper1989/react-uni -f ./App/app/Dockerfile.dev ./App/app
 
 script:
   - docker run -e CI=true trooper1989/react-uni npm run test -- --coverage
-
-after_script:
-  - zip -r docker-app.zip ./App/app
 
 deploy:
   provider: elasticbeanstalk
