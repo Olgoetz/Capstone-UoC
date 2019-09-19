@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/black.css" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? "css/print/pdf.css"
+        : "css/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1 style="text-align: right;">
+            <b>Cloud</b>
+          </h1>
+          <h1 style="text-align: right;">
+            <b>Engineering</b>
+          </h1>
+          <h1 style="text-align: right;">
+            <b>in</b>
+          </h1>
+          <h1 style="text-align: right;">
+            <b> <font color="#f08">1</font> day</b>
+          </h1>
+        </section>
+        <section>
+          <h1 class="">Agenda</h1>
+          <table>
+            <tr>
+              <td>1</td>
+              <td>Introduction</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Infrastructure as a Code</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>The World of Containers</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>CI / CD Piplines</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Summary</td>
+            </tr>
+          </table>
+        </section>
+        <!-- INTRODUCTION -->
+        <section>
+          <div
+            style="display:flex; flex-flow: row wrap; justify-content: space-around;"
+          >
+            <div>
+              Dr. Nikolaus Schmidt <br />
+              <p style="font-size: 50%">
+                Head of IT <br />
+                AXA GO Germany
+              </p>
+            </div>
+            <div>
+              Oliver Götz<br />
+              <p style="font-size: 50%">
+                Cloud Engineer<br />
+                AXA GO Germany
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- INFRASTRUCTURE AS CODE -->
+        <section><h1>Why Infrastructure as Code?</h1></section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: "plugin/markdown/marked.js" },
+          { src: "plugin/markdown/markdown.js" },
+          { src: "plugin/notes/notes.js", async: true },
+          { src: "plugin/highlight/highlight.js", async: true }
+        ]
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+version: "3"
+services:
+  webapp:
+    image: trooper1989/react-app
+    container_name: react-app
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - "app/node_modules"
+      - "${PWD}:/app"
