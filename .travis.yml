@@ -17,4 +17,4 @@ deploy:
   region: "eu-central-1"
   app: "docker-app"
   env: "docker-app"
-  bucket_name: "oliver-goetz-docker"
+  bucket_name: "elasticbeanstalk-eu-central-1-990322255852"
