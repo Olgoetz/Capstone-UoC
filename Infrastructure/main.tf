@@ -6,12 +6,6 @@ provider "aws" {
 }
 
 
-resource "aws_s3_bucket" "bs" {
-  bucket = "oliver-goetz-docker-eb"
-  acl    = "private"
-
-  tags = var.tags
-}
 
 
 resource "aws_elastic_beanstalk_application" "bsapp" {
