@@ -10,6 +10,7 @@
     <title>reveal.js</title>
 
     <link rel="stylesheet" href="css/reset.css" />
+
     <link rel="stylesheet" href="css/reveal.css" />
     <link rel="stylesheet" href="css/theme/black.css" />
 
@@ -91,8 +92,47 @@
           </div>
         </section>
 
+        <section data-background="#ffffff">
+          <h1>Plan of Attack</h1>
+          <div style="align-content: center">
+            <img
+              class="stretch"
+              src="images/Plan of Attack.png"
+              style="width:60%;height:60%; box-shadow: none; background: none; border: none;"
+            />
+          </div>
+        </section>
+
         <!-- INFRASTRUCTURE AS CODE -->
-        <section><h1>Why Infrastructure as Code?</h1></section>
+        <section>
+          <section>
+            <h1>Why Infrastructure as Code?</h1>
+            <p class="fragment">
+              ... <span style="color: #67AB9F">less </span>human error
+            </p>
+            <p class="fragment">
+              ... <span style="color: #67AB9F">one </span>state of the
+              infrastructure
+            </p>
+            <p class="fragment">
+              ... <span style="color: #67AB9F">efficient </span>deployments and
+              destruction
+            </p>
+          </section>
+
+          <section>
+            <div style="display:flex; align-items: center">
+              <div>
+                <img
+                  src="images/terraform.png"
+                  style="width:60%;height:60%;
+                box-shadow: none; background: none; border: none;"
+                />
+              </div>
+              <div></div>
+            </div>
+          </section>
+        </section>
       </div>
     </div>
 
@@ -107,7 +147,9 @@
           { src: "plugin/markdown/marked.js" },
           { src: "plugin/markdown/markdown.js" },
           { src: "plugin/notes/notes.js", async: true },
-          { src: "plugin/highlight/highlight.js", async: true }
+          { src: "plugin/highlight/highlight.js", async: true },
+          // Zoom in and out with Alt+click
+          { src: "plugin/zoom-js/zoom.js", async: true }
         ]
       });
     </script>
