@@ -27,4 +27,4 @@ deploy:
   env: "docker-app-env"
   zip_file: /$TRAVIS_BUILD_DIR/docker-app-$TRAVIS_BUILD_NUMBER.zip
   skip_cleanup: true
-  bucket_name: "elasticbeanstalk-eu-central-1-990322255852"
+  bucket_name: "elasticbeanstalk-eu-central-1-451453809844"
