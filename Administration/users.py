@@ -11,7 +11,7 @@ import pandas as pd
 #####################################################
 
 
-session = boto3.Session(profile_name="cloud_garage")
+session = boto3.Session(profile_name="sandbox")
 client = session.client('iam')
 
 
@@ -119,10 +119,10 @@ def createUsers(iam_policy_arn):
     # df = pd.read_excel(
     #     '/Users/olivergoetz/Development/Capstone-Uni/Administration/Capstone_WS1920_Teilnehmer.xlsx')
 
-    df = pd.read_excel("ONE.xlsx")
+    df = pd.read_excel("Capstone_WS1920_Teilnehmer.xlsx")
     for index, row in df.iterrows():
         userName = row["Benutzername"]
-        password = randomString(8)
+        password = randomString(15)
         row["Passwort"] = password
         students.append(row)
 
@@ -136,23 +136,23 @@ def createUsers(iam_policy_arn):
             PasswordResetRequired=True
         )
 
+        logging.info('Users created')
+
+        waiter = client.get_waiter('user_exists')
+
+        waiter.wait(UserName=userName)
+
+        logging.info('Attaching IAM policy')
+
+        client.attach_user_policy(
+            UserName=userName,
+            PolicyArn=iam_policy_arn
+        )
+
+        logging.info('IAM policy attached')
+
     new_df = pd.DataFrame(students)
     new_df.to_excel('Studis_with_Password.xlsx')
-
-    logging.info('Users created')
-
-    waiter = client.get_waiter('user_exists')
-
-    waiter.wait(UserName=userName)
-
-    logging.info('Attaching IAM policy')
-
-    client.attach_user_policy(
-        UserName=userName,
-        PolicyArn=iam_policy_arn
-    )
-
-    logging.info('IAM policy attached')
 
 
 def deleteUsers(data):
@@ -160,7 +160,7 @@ def deleteUsers(data):
     # userName = data[0]
     Arn = data[0]
 
-    df = pd.read_excel("ONE.xlsx")
+    df = pd.read_excel("Capstone_WS1920_Teilnehmer.xlsx")
     for index, row in df.iterrows():
         userName = row["Benutzername"]
 

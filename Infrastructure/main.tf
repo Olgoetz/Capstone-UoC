@@ -2,7 +2,7 @@ provider "aws" {
 
   region                  = var.region
   shared_credentials_file = "/Users/olivergoetz/.aws/credentials"
-  profile                 = "cloud_garage"
+  profile                 = "sandbox"
 }
 
 
@@ -18,7 +18,7 @@ resource "aws_elastic_beanstalk_application" "bsapp" {
 
 
 resource "aws_elastic_beanstalk_environment" "bsappenvtest" {
-  name                = "docker-app"
+  name                = "docker-app-env"
   application         = aws_elastic_beanstalk_application.bsapp.name
   solution_stack_name = "64bit Amazon Linux 2018.03 v2.12.17 running Docker 18.06.1-ce"
 

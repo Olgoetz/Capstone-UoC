@@ -33,6 +33,7 @@ myplan
 /build
 
 # misc
+*Password.xlsx
 .DS_Store
 .env.local
 .env.development.local

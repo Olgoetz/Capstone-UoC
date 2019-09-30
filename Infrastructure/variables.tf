@@ -7,10 +7,9 @@ variable "region" {
 variable "tags" {
 
   default = {
-    "Owner"   = "Oliver.Goetz"
-    "Entity"  = "University_of_Cologne"
-    "Purpose" = "Capstone_Course"
-    "Team"    = "Lecturer"
+    "Owner"  = "Oliver.Goetz"
+    "Entity" = "UoC"
+    "Team"   = "Lecturer"
   }
 
 }
