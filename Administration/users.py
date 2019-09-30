@@ -4,7 +4,7 @@ import argparse
 import random
 import string
 import logging
-
+import pandas as pd
 
 #####################################################
 # ---> GET A SESSION TO CALL THE AWS API
@@ -38,7 +38,7 @@ group.add_argument("-cp", '--createIamPolicy', action="store_true",
                    help="Calls the creatIamPolicy function")
 group.add_argument("-cus", '--createUsers', action="store", type=str,
                    help="Calls the createUser function. You MUST provide an IAM policy ARN")
-group.add_argument("-du", '--deleteUser', nargs='+',
+group.add_argument("-dus", '--deleteUsers', nargs='+',
                    help="Calls the deleteUser function. You MUST provide the username and IAM policy ARN attached to the user")
 
 
@@ -63,6 +63,7 @@ def randomString(stringLength):
 #####################################################
 # ---> CONFIGURATION OF THE IAM POLICY
 #####################################################
+
 
 def createIamPolicy():
 
@@ -114,19 +115,29 @@ def createUsers(iam_policy_arn):
 
     logging.info('Creating users')
 
-    userName = "firstUser"
+    students = []
+    # df = pd.read_excel(
+    #     '/Users/olivergoetz/Development/Capstone-Uni/Administration/Capstone_WS1920_Teilnehmer.xlsx')
 
-    client.create_user(
-        UserName=userName
-    )
+    df = pd.read_excel("ONE.xlsx")
+    for index, row in df.iterrows():
+        userName = row["Benutzername"]
+        password = randomString(8)
+        row["Passwort"] = password
+        students.append(row)
 
-    password = randomString(8)
+        client.create_user(
+            UserName=userName
+        )
 
-    client.create_login_profile(
-        UserName=userName,
-        Password=password,
-        PasswordResetRequired=True
-    )
+        client.create_login_profile(
+            UserName=userName,
+            Password=password,
+            PasswordResetRequired=True
+        )
+
+    new_df = pd.DataFrame(students)
+    new_df.to_excel('Studis_with_Password.xlsx')
 
     logging.info('Users created')
 
@@ -144,26 +155,31 @@ def createUsers(iam_policy_arn):
     logging.info('IAM policy attached')
 
 
-def deleteUser(data):
+def deleteUsers(data):
 
-    userName = data[0]
-    Arn = data[1]
+    # userName = data[0]
+    Arn = data[0]
 
-    logging.info(f"Deleting user {userName}")
+    df = pd.read_excel("ONE.xlsx")
+    for index, row in df.iterrows():
+        userName = row["Benutzername"]
 
-    client.detach_user_policy(
-        UserName=userName,
-        PolicyArn=Arn
-    )
+        logging.info(f"Deleting user {userName}")
 
-    client.delete_login_profile(
-        UserName=userName
-    )
-    client.delete_user(
-        UserName=userName
-    )
+        client.detach_user_policy(
+            UserName=userName,
+            PolicyArn=Arn
+        )
 
-    logging.info(f'{userName} deleted')
+        client.delete_login_profile(
+            UserName=userName
+        )
+
+        client.delete_user(
+            UserName=userName
+        )
+
+        logging.info(f'{userName} deleted')
 
 
 #####################################################
@@ -183,7 +199,8 @@ if __name__ == '__main__':
         logging.info(f"The policy ARN is: {iam_policy_arn['Policy']['Arn']}")
 
     if args.createUsers:
+
         createUsers(args.createUsers)
 
-    if args.deleteUser:
-        deleteUser(args.deleteUser)
+    if args.deleteUsers:
+        deleteUsers(args.deleteUsers)

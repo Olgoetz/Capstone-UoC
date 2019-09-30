@@ -42,7 +42,7 @@
             <b>in</b>
           </h1>
           <h1 style="text-align: right;">
-            <b> <font color="#f08">1</font> day</b>
+            <b> <font color="#67AB9F"">1</font> day</b>
           </h1>
         </section>
         <section>
@@ -70,7 +70,14 @@
             </tr>
           </table>
         </section>
+
         <!-- INTRODUCTION -->
+        <section>
+        <section><h1><span style="color: #67AB9F">[1]</span><br>Introduction</h1></section>
+
+      
+
+       
         <section>
           <div
             style="display:flex; flex-flow: row wrap; justify-content: space-around;"
@@ -78,7 +85,7 @@
             <div>
               Dr. Nikolaus Schmidt <br />
               <p style="font-size: 50%">
-                Head of IT <br />
+                Head of IT Products & Integration<br />
                 AXA GO Germany
               </p>
             </div>
@@ -86,27 +93,35 @@
               Oliver Götz<br />
               <p style="font-size: 50%">
                 Cloud Engineer<br />
+                GO-IPCB <br>
                 AXA GO Germany
               </p>
             </div>
           </div>
         </section>
+    
+       
 
         <section data-background="#ffffff">
           <h1>Plan of Attack</h1>
           <div style="align-content: center">
             <img
               class="stretch"
-              src="images/Plan of Attack.png"
+              src="images/plan_of_attack.png"
               style="width:60%;height:60%; box-shadow: none; background: none; border: none;"
             />
           </div>
         </section>
 
+        </section>
+
         <!-- INFRASTRUCTURE AS CODE -->
         <section>
           <section>
-            <h1>Why Infrastructure as Code?</h1>
+            <h1><span style="color: #67AB9F">[2]</span><br>Infrastructure as Code (IaC)?</h1>
+
+          </section>
+          <section><h3>Why IaC?</h3>
             <p class="fragment">
               ... <span style="color: #67AB9F">less </span>human error
             </p>
@@ -120,7 +135,8 @@
             </p>
           </section>
 
-          <section>
+          <!-- Terraform Intro-->
+          <section data-background="white">
             <div style="display:flex; align-items: center">
               <div>
                 <img
@@ -129,10 +145,302 @@
                 box-shadow: none; background: none; border: none;"
                 />
               </div>
-              <div></div>
+              <div class="fragment fade-in" style="flex-basis: 90%">
+                <ul style="font-size: 0.8em;">
+                  <li>
+                    <span style="color: #67AB9F"
+                      >Write declarative configuration files</span
+                    >
+                  </li>
+                  <li>Plan and predict changes</li>
+                  <li>
+                    <span style="color: #67AB9F"
+                      >Create reproducable infrastructure</span
+                    >
+                  </li>
+                  <li>Automate consistent workflows</li>
+                </ul>
+              </div>
             </div>
           </section>
+
+          <!-- AWS Intro-->
+          <section data-background="white">
+            <div style="display:flex; align-items: center">
+              <div>
+                <img
+                  src="images/aws.gif"
+                  style="width:100%;height:100%;
+                      box-shadow: none; background: none; border: none;"
+                />
+              </div>
+              <div class="fragment fade-in" style="flex-basis: 90%">
+                <ul style="font-size: 0.8em;">
+                  <li>+165 Services</li>
+                  <li><span style="color: #67AB9F">22 Regions</span></li>
+                  <li>65 Availability Zones</li>
+                  <li>
+                    <span style="color: #67AB9F">$25.5 Billion Turnover</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Terraform HCL-->
+          <section>
+            <h2>
+              Hashicorp Configuration Language
+              <span style="color: #67AB9F">(HCL)</span>
+            </h2>
+            <pre
+              style="width: 100%; height: 100%;"
+            ><code style="max-height: 100%;" class="fragment fade-in-then-semi-out"
+>provider "aws" {
+
+  region                  = var.region
+  shared_credentials_file = "/Users/olivergoetz/.aws/credentials"
+  profile                 = "account-234"
+
+}</code><code style="max-height: 100%;" class="fragment fade-in" >resource "aws_s3_bucket" "b" {
+
+  bucket = "my-tf-test-bucket"
+  acl    = "private"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
+    </code></pre>
+          </section>
+
+          <!-- Task 1 -->
+          <section>
+            <h2><span style="color: #67AB9F">Task 1 (60')</span></h2>
+            <p style="font-size: 0.7em;text-align: left">
+              Explore the AWS management console. Then install the Terraform CLI
+              and get familiar with its configuration language. 
+              <br>
+              Test you knowledge by provisioning a S3 bucket. 
+              <br>
+              <br>
+              Deploy an AWS Beanstalk docker app <span style="color: #67AB9F">
+              (name=[yourAwsUsername-app])</span>
+              as well as AWS Beanstalk docker environment <span style="color: #67AB9F">
+              (name=[yourAwsUsername-env])</span> which will host your app later.
+              <br>
+              <br>
+              In order to correctly allocate a resource to its owner
+              you are supposed to use the following tags:
+            </p>
+            <ul style="font-size: 0.8em;text-align: left">
+              <li>Name=[yourAwsUsername]</li>
+              <li>Team=[yourTeam]</li>
+              <li>Entity=UoC</li>
+            </ul>
+          </section>
         </section>
+
+        <!-- LUNCH (60')-->
+        <section>
+          <h1><span style="color: #67AB9F">LUNCH (60')</span></h1>
+        </section>
+
+         <!-- THE WORLD OF CONTAINERS-->
+         <section>
+         <section>
+            <h1><span style="color: #67AB9F">[3]</span><br>The World of Containers</h1>
+          </section>
+
+          <section data-background="white">
+              <h3>What are containers?</h3>
+  
+              <img src="images/VM_vs_Container.png" style="box-shadow: none; background: none; 
+            border: none;">
+          </section>
+          <section>
+              <h3>Why do we need containers?</h3>
+  
+              <p class="fragment">
+                  ... <span style="color: #67AB9F">easy </span>deployment
+                </p>
+                <p class="fragment">
+                  ... <span style="color: #67AB9F">bundled </span>dependencies
+                </p>
+                <p class="fragment">
+                  ... <span style="color: #67AB9F">fast </span>execution
+                </p>
+            </section>
+
+
+                        <!-- DOCKER FILE-->
+      
+
+          <section>
+              <h2>
+                The
+                <span style="color: #67AB9F">Dockerfile</span>
+              </h2>
+              <pre
+                style="width: 100%; height: 100%;"
+              ><code style="max-height: 100%;" class="hljs" data-line-numbers
+  >FROM node:alpine
+
+WORKDIR /app
+
+COPY ./package.json .
+
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "start"]</code></pre>
+
+
+          </section>
+
+        <!-- Task 2 -->
+        <section>
+            <h2><span style="color: #67AB9F">Task 2 (90')</span></h2>
+            <p style="font-size: 0.8em;text-align: left">
+              Get familiar with Docker, particularly with the terms "image", "container" and the
+              basic commands. Then test out some examples on the official page.
+              <br>
+              <br>
+              What can you achieve with "docker-compose"? What is its purpose?
+              <br>
+              <br>
+              Last but not least "dockerize" your gatsby app! 
+              <br>
+              <br>
+              Test your dockerization by making changes
+              in the code base and see if your app gets updated.
+
+            </p>
+     
+          </section>
+        </section>
+
+        <section>
+          <section>
+          <h1><span style="color: #67AB9F">[4] </span><br>CI / CD Pipelines</h1>
+        </section>
+          <section>
+            <h3>What is continuous integration (CI) and why is it necessary?</h3>
+
+            <p class="fragment">
+                ... <span style="color: #67AB9F">common </span>code base (VCS)
+              </p>
+              <p class="fragment">
+                ... <span style="color: #67AB9F">permanently </span>checking in code
+              </p>
+              <p class="fragment">
+                ... <span style="color: #67AB9F">triggering </span>automated builds
+              </p>
+          </section>
+
+          <section>
+              <h3>What is continuous deploy (CD) and why is it necessary?</h3>
+  
+              <p class="fragment">
+                  ... <span style="color: #67AB9F">always </span>runnable
+                </p>
+                <p class="fragment">
+                  ... <span style="color: #67AB9F">enriching </span>the current version with new features
+                </p>
+                <p class="fragment">
+                  ... <span style="color: #67AB9F">customer </span>doesn't nee to wait for next release
+                </p>
+            </section>
+
+          <section data-background="white">
+            <img src="images/devops.png" style="box-shadow: none; background: none; 
+            border: none;">
+          </section>
+
+
+              <!-- TRAVIS CI .yml example-->
+              <section>
+                  <h2>
+                    Travis CI
+                    <span style="color: #67AB9F">.yml</span>
+                  </h2>
+                  <pre
+                    style="width: 100%; height: 100%;"
+                  ><code style="max-height: 100%; font-size: 0.7em;" class="fragment fade-in-then-semi-out"
+>sudo: required
+
+language: bash
+
+services:
+  - docker
+</code><code style="max-height: 100%; font-size: 0.7em;"  class="fragment fade-in">
+before_install:
+  - docker build -t trooper1989/react-uni -f ./App/app/Dockerfile.dev ./App/app
+
+script:
+  - docker run -e CI=true trooper1989/react-uni npm run test -- --coverage
+
+before_deploy:
+  - cd ./App/app && zip -r /$TRAVIS_BUILD_DIR/docker-app-$TRAVIS_BUILD_NUMBER.zip *
+
+deploy:
+  provider: elasticbeanstalk
+  ...
+</code></pre>
+      </section>
+
+
+       <!-- Task 3 -->
+       <section>
+          <h2><span style="color: #67AB9F">Task 3 (90')</span></h2>
+          <p style="text-align: left">
+            Get familiar with Travis CI and set up the connection with your Git repository.
+            <br>
+            <br>
+            Write the .yml file (Hint: Use a very simple test script).
+            <br>
+            <br>
+            Deploy your app on the provided AWS Beanstalk environment.
+            <br>
+            <br>
+            Change the code, commit and push the changes to your master branch and check
+            if your pipeline works.
+
+          </p>
+   
+        </section>
+
+
+        </section>
+
+
+        <!-- SUMMARY-->
+
+        <section>
+            <section><h1><span style="color: #67AB9F">[5] </span><br>Summary</h1></section>
+         
+            <section style="text-align: left">
+              <p class="fragment">
+                  * <span style="color: #67AB9F">Acquired </span>basic knoweledge in the most-widely used orchestration tool Terraform
+                </p>
+              <p class="fragment">
+                  * <span style="color: #67AB9F">Provisioned </span>a whole infrastructure as code for a docker app
+                </p>
+                <p class="fragment">
+                  * <span style="color: #67AB9F">Gained </span>fundamental knowledge about AWS
+                </p>
+                <p class="fragment">
+                  * <span style="color: #67AB9F">Built </span>fully working CI/CD pipeline which is a common practice
+                </p>
+
+                <p class="fragment">
+                    * <span style="color: #67AB9F">Deepened </span>knowledge in the CloudEngineering/DevOps paradigm
+                  </p>
+
+              </section>
+          </section>
       </div>
     </div>
 
