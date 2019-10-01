@@ -31,4 +31,3 @@ deploy:
 
   skip_cleanup: true
   bucket: "oliver-goetz-capstone-bucket"
-  local_dir: ./App/$APP_FOLDER/public
