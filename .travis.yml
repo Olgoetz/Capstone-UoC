@@ -2,18 +2,21 @@ sudo: required
 
 language: bash
 
+env:
+  - APP=Gatsby
+
 services:
   - docker
 
 before_install:
-  - docker build -t trooper1989/gatsby-app -f ./App/Gatsby/Dockerfile.dev ./App/Gatsby
+  - docker build -t trooper1989/$APP-App -f ./App/$APP/Dockerfile.dev ./App/$APP
 
 script:
-  - docker run -e CI=true trooper1989/gatsby-app npm test
+  - docker run -e CI=true trooper1989/$APP-app npm test
 
 before_deploy:
   - echo 'Zipping the app'
-  - cd ./App/Gatsby && zip -r /$TRAVIS_BUILD_DIR/gatsby-app-$TRAVIS_BUILD_NUMBER.zip *
+  - cd ./App/$APP && zip -r /$TRAVIS_BUILD_DIR/$APP-App-$TRAVIS_BUILD_NUMBER.zip *
   - echo 'Zipping finished'
 
 deploy:
@@ -25,6 +28,6 @@ deploy:
   region: "eu-central-1"
   app: "docker-app"
   env: "docker-app-env"
-  zip_file: /$TRAVIS_BUILD_DIR/docker-app-$TRAVIS_BUILD_NUMBER.zip
+  zip_file: /$TRAVIS_BUILD_DIR/$APP-app-$TRAVIS_BUILD_NUMBER.zip
   skip_cleanup: true
   bucket_name: "elasticbeanstalk-eu-central-1-451453809844"
