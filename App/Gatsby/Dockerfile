@@ -15,7 +15,6 @@ RUN npm install sharp
 
 RUN npm install -g gatsby-cli 
 
-
 RUN npm run build
 
 # Serve the built
@@ -23,4 +22,4 @@ FROM nginx:alpine
 
 EXPOSE 80
 
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /app/public /usr/share/nginx/html
