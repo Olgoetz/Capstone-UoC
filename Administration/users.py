@@ -119,7 +119,7 @@ def createUsers(iam_policy_arn):
     # df = pd.read_excel(
     #     '/Users/olivergoetz/Development/Capstone-Uni/Administration/Capstone_WS1920_Teilnehmer.xlsx')
 
-    df = pd.read_excel("Capstone_WS1920_Teilnehmer.xlsx")
+    df = pd.read_excel("cpt.xlsx")
     for index, row in df.iterrows():
         userName = row["Benutzername"]
         password = randomString(15)
@@ -152,7 +152,7 @@ def createUsers(iam_policy_arn):
         logging.info('IAM policy attached')
 
     new_df = pd.DataFrame(students)
-    new_df.to_excel('Studis_with_Password.xlsx')
+    new_df.to_excel('cptp.xlsx')
 
 
 def deleteUsers(data):

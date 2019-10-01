@@ -6,14 +6,14 @@ services:
   - docker
 
 before_install:
-  - docker build -t trooper1989/react-uni -f ./App/app/Dockerfile.dev ./App/app
+  - docker build -t trooper1989/gatsby-app -f ./App/Gatsby/Dockerfile.dev ./App/Gatsby
 
 script:
-  - docker run -e CI=true trooper1989/react-uni npm run test -- --coverage
+  - docker run -e CI=true trooper1989/gatsby-app npm test
 
 before_deploy:
   - echo 'Zipping the app'
-  - cd ./App/app && zip -r /$TRAVIS_BUILD_DIR/docker-app-$TRAVIS_BUILD_NUMBER.zip *
+  - cd ./App/app && zip -r /$TRAVIS_BUILD_DIR/gatsby-app-$TRAVIS_BUILD_NUMBER.zip *
   - echo 'Zipping finished'
 
 deploy:

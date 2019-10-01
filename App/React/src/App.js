@@ -1,6 +1,6 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   return (
@@ -10,11 +10,9 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-      
       </header>
       <div>
-      <h1>I am dockerized React App of the Oliver Goetz!
-        ! </h1>
+        <h1>I am dockerized React App of the Oliver Goetz! ! </h1>
       </div>
     </div>
   );
