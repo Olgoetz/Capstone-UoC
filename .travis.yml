@@ -7,6 +7,9 @@ env:
     - APP=gatsby
     - APP_FOLDER=Gatsby
 
+before_script:
+  - cd App/$APP_FOLDER
+
 script:
   - npm run test
 
