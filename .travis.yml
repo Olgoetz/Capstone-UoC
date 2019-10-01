@@ -13,7 +13,7 @@ script:
 
 before_deploy:
   - echo 'Zipping the app'
-  - cd ./App/app && zip -r /$TRAVIS_BUILD_DIR/gatsby-app-$TRAVIS_BUILD_NUMBER.zip *
+  - cd ./App/Gatsby && zip -r /$TRAVIS_BUILD_DIR/gatsby-app-$TRAVIS_BUILD_NUMBER.zip *
   - echo 'Zipping finished'
 
 deploy:
