@@ -1,0 +1,13 @@
+version: "3"
+services:
+  webapp:
+    image: trooper1989/gatsby-app
+    container_name: gatsby-app
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - "app/node_modules"
+      - "${PWD}:/app"

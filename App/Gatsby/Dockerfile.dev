@@ -1,0 +1,19 @@
+FROM node:alpine
+
+WORKDIR /app
+
+
+COPY ./package.json .
+
+RUN npm install
+
+COPY . .
+
+RUN rm -rf node_modules/sharp
+
+RUN npm install sharp 
+
+RUN npm install -g gatsby-cli 
+
+
+CMD ["gatsby", "develop", "--host", "0.0.0.0"]
