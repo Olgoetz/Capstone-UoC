@@ -23,6 +23,12 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: "oliver-goetz-capstone-bucket",
+      },
+    },
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
