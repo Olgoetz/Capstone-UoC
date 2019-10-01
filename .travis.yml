@@ -28,8 +28,8 @@ deploy:
   secret_access_key:
     secure: "$SECRET_ACCESS_KEY"
   region: "eu-central-1"
-  app: "docker-app"
-  env: "docker-app-env"
+  app: "oliver-goetz-app"
+  env: "oliver-goetz-app-env"
   zip_file: /$TRAVIS_BUILD_DIR/$APP-app-$TRAVIS_BUILD_NUMBER.zip
   skip_cleanup: true
   bucket_name: "elasticbeanstalk-eu-central-1-451453809844"

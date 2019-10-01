@@ -9,8 +9,8 @@ provider "aws" {
 
 
 resource "aws_elastic_beanstalk_application" "bsapp" {
-  name        = "docker-app"
-  description = "Dockerized React App"
+  name        = "oliver-goetz-app"
+  description = "Dockerized App"
 
   tags = var.tags
 }
@@ -18,7 +18,7 @@ resource "aws_elastic_beanstalk_application" "bsapp" {
 
 
 resource "aws_elastic_beanstalk_environment" "bsappenvtest" {
-  name                = "docker-app-env"
+  name                = "oliver-goetz-app-env"
   application         = aws_elastic_beanstalk_application.bsapp.name
   solution_stack_name = "64bit Amazon Linux 2018.03 v2.12.17 running Docker 18.06.1-ce"
 
