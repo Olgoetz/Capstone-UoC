@@ -26,4 +26,4 @@ deploy:
   region: "eu-central-1"
   skip_cleanup: true
   bucket: "oliver-goetz-capstone-bucket"
-  local_dir: ./App/$APP_FOLDER/public
+  local_dir: App/$APP_FOLDER/public
