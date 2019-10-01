@@ -1,35 +1,25 @@
-sudo: required
+# sudo: required
 
-language: bash
+# language: bash
 
 env:
   global:
     - APP=gatsby
     - APP_FOLDER=Gatsby
 
-services:
-  - docker
-
-before_install:
-  - docker build -t trooper1989/$APP-app -f ./App/$APP_FOLDER/Dockerfile.dev ./App/$APP_FOLDER
-
 script:
-  - docker run -e CI=true trooper1989/$APP-app npm test
+  - npm run test
 
 before_deploy:
-  - echo 'Zipping the app'
-  - cd ./App/$APP_FOLDER && zip -r /$TRAVIS_BUILD_DIR/$APP-app-$TRAVIS_BUILD_NUMBER.zip *
-  - echo 'Zipping finished'
+  - npm run build
 
 deploy:
-  provider: elasticbeanstalk
+  provider: s3
   access_key_id:
     secure: "$ACCESS_KEY_ID"
   secret_access_key:
     secure: "$SECRET_ACCESS_KEY"
   region: "eu-central-1"
-  app: "oliver-goetz-app"
-  env: "oliver-goetz-app-env"
-  zip_file: /$TRAVIS_BUILD_DIR/$APP-app-$TRAVIS_BUILD_NUMBER.zip
   skip_cleanup: true
-  bucket_name: "elasticbeanstalk-eu-central-1-451453809844"
+  bucket: "oliver-goetz-capstone-bucket"
+  local_dir: ./App/$APP_FOLDER/public
