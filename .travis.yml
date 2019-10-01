@@ -3,8 +3,9 @@ sudo: required
 language: bash
 
 env:
-  - APP=gatsby
-  - APP_FOLDER=Gatsby
+  global:
+    - APP=gatsby
+    - APP_FOLDER=Gatsby
 
 services:
   - docker
