@@ -12,7 +12,11 @@ resource "aws_elastic_beanstalk_application" "bsapp" {
   name        = "oliver-goetz-app"
   description = "Dockerized App"
 
-  tags = var.tags
+  tags = {
+    Name   = "OliverGoetz"
+    Team   = "AXA"
+    Entity = "AXAGO"
+  }
 }
 
 
@@ -28,7 +32,11 @@ resource "aws_elastic_beanstalk_environment" "bsappenvtest" {
     value     = "aws-elasticbeanstalk-ec2-role"
   }
 
-  tags = var.tags
+  tags = {
+    Name   = "OliverGoetz"
+    Team   = "AXA"
+    Entity = "AXAGO"
+  }
 }
 
 
